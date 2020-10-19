@@ -13,10 +13,10 @@ print(torch.matmul(X, y))
 #[Your task1]
 ##############################
 ## Fill in the arguments
-res1 = torch.lstsq(...fill this...)
+res1 = torch.lstsq(y, X)
 ##############################
 print("Solution 1:")
-print(res1[0])
+print(res1[0]) # tensor([[-0.], [1.]])
 
 # Hint:
 print(torch.matmul(torch.transpose(X, 0, 1),X))
@@ -26,21 +26,20 @@ print(torch.matmul(torch.transpose(X, 0, 1),y))
 ##############################
 ## What should l and r be?
 ## Dimensions: l (2x2); r (2x1)
-l = (...fill this...)
-r =  (...fill this...)
+l = torch.matmul(torch.transpose(X, 0, 1),X) # X^TX
+r = torch.matmul(torch.transpose(X, 0, 1),y) # X^Ty
 ##############################
-res2 = torch.solve(r,l)
+res2 = torch.solve(r,l) # X^TXw = X^Ty
 print("Solution 2:")
-print(res2[0])
-
+print(res2[0]) # tensor([[0.], [1.]])
 
 #[Your task3]
 ##############################
 ## What should l and r be?
 ## Dimensions: l (2x2); r (2x1)
-l = (...fill this...)
-r = (...fill this...)
+l = torch.matmul(torch.transpose(X, 0, 1),X) # X^TX
+r = torch.matmul(torch.transpose(X, 0, 1),y) # X^Ty
 ##############################
 res3 = torch.matmul(torch.inverse(l),r)
 print("Solution 3:")
-print(res3)
+print(res3) # tensor([[-4.7684e-07], [ 1.0000e+00]])

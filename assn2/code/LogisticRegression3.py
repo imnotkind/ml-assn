@@ -9,7 +9,7 @@ X = torch.Tensor([[-1, 1, 2],[1, 1, 1]])
 ## modify the dataset so that it can be used here and is equivalent to the one 
 ## used in LogisticRegression.py and LogisticRegression2.py 
 ## Dimensions: y (3)
-y = torch.Tensor(...fill this...)
+y = torch.Tensor([0,1,1])
 ##############################
 
 
@@ -41,7 +41,7 @@ for iter in range(100):
     # [your task2]
     ##############################
     ## provide the arguments for the criterion function
-    loss = criterion(...fill this...)
+    loss = criterion(netOutput, y)
     ##############################
     
     loss.backward()

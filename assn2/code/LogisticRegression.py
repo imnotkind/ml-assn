@@ -14,12 +14,13 @@ for iter in range(100):
     ## Use tmp to compute f and g. Instead of summing we average the result, i.e.,
     ## complete only inside torch.mean(...) and don't remove this function
     ## Dimensions: f (scalar); g (2)
-    f = torch.mean((...fill this...))
-    g = torch.mean((...fill this...), (...fill this...))
+    f = torch.mean(torch.log(1 + tmp))
+    g = torch.mean( (((-y) * tmp) / (1 + tmp)) * X, dim=1)
     ##############################
     
     print("Loss: %f; ||g||: %f" % (f, torch.norm(g)))
     g = g.view(-1,1)
     w = w - alpha*g
+
 
 print(w)

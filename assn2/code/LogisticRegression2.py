@@ -18,7 +18,7 @@ for iter in range(100):
     ##############################
     ## loss is the same as f in LogisticRegression.py
     ## Dimensions: loss (scalar)
-    loss = (...fill this...)
+    loss = torch.mean(torch.log(1 + tmp))
     ##############################
     
     loss.backward()
@@ -27,8 +27,8 @@ for iter in range(100):
     # [your task2]
     ##############################
     ## Use two functions within the optimizer instance to perform the update step
-    optimizer.(...fill this...)
-    optimizer.(...fill this...)
+    optimizer.step()
+    optimizer.zero_grad()
     ##############################
     
 

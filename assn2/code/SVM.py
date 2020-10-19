@@ -39,7 +39,13 @@ for iter in range(10000):
     ##############################
     ## Complete this single line which is our cost function
     ## Dimensions: loss (scalar)
-    loss =(...fill this...)
+    l2 = 0
+    for f in net.parameters():
+        if f.shape == torch.Size([1, 2]): # only weight, not bias
+            l2 += torch.sum(torch.square(f))
+    loss = l2 * C / 2 + torch.sum(torch.clamp(1 - y*net(torch.transpose(X,0,1)).squeeze(), min=0))
+
+    loss_wrong = (torch.sum(torch.square(list(net.parameters())[0].data)) * C / 2) + torch.sum(torch.clamp(1 - y*net(torch.transpose(X,0,1)).squeeze(), min=0)) # this code doesn't calculate the gradient of regularizer term
     ##############################
     
     loss.backward()
