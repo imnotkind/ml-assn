@@ -24,7 +24,7 @@ for iter in range(10):
     ##############################
     ## compute the distance between points and cluster centers
     ## Dimensions: dist (2x20)
-    dist = 0.5*torch.norm( ...fill this..., dim=1) ** 2
+    dist = 0.5*torch.norm(x - ctmp, dim=1) ** 2
     ##############################
 
     val,assign = dist.min(0)

@@ -157,7 +157,7 @@ for epoch in range(numEpoch):
             #[Your task1]
             ##############################
             ## implement the discriminator loss (-logD trick)
-            loss = criterion(logit, ...fill this...)
+            loss = criterion(logit, target1)
             ##############################
             
             print("E: %d; B: %d; DLoss: %f" % (epoch,batch_idx,loss.item()))
@@ -172,7 +172,7 @@ for epoch in range(numEpoch):
             #[Your task2]
             ##############################
             ## implement the generator loss (-logD trick)
-            loss = criterion(logit, ...fill this...)
+            loss = criterion(logit, target2)
             ##############################
             loss.backward()
             print("E: %d; B: %d; GLoss: %f" % (epoch,batch_idx,loss.item()))
